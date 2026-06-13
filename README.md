@@ -4,7 +4,7 @@ Personal portfolio website built with vanilla HTML, CSS, and JavaScript.
 
 ## Live Site
 
-> https://sdneshkumar.github.io
+> Coming soon
 
 ## Tech Stack
 
