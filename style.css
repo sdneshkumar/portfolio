@@ -513,6 +513,16 @@ img { max-width: 100%; display: block; }
 [data-theme="light"] .devicon-github-original { color: #1a1a2e; }
 [data-theme="dark"] .devicon-express-original,
 [data-theme="dark"] .devicon-github-original { color: #e2e2f0; }
+.tizen-icon-wrap {
+    background: #ffffff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
 .skill-icon-card span {
     font-size: 0.72rem;
     font-weight: 600;
