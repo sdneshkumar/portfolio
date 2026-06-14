@@ -516,8 +516,8 @@ img { max-width: 100%; display: block; }
 .tizen-icon-wrap {
     background: #ffffff;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
