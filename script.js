@@ -65,14 +65,23 @@ document.querySelectorAll('.copy-email-trigger').forEach(btn => {
         navigator.clipboard.writeText('sdineshkumar1208@gmail.com').then(() => {
             document.querySelectorAll('.copy-email-trigger').forEach(b => {
                 b.classList.remove('copied');
-                if (b.classList.contains('btn')) b.textContent = 'Copy Email Address';
+                if (b.classList.contains('btn')) {
+                    b.style.minWidth = '';
+                    b.textContent = 'Copy Email Address';
+                }
             });
             btn.classList.add('copied');
-            if (btn.classList.contains('btn')) btn.textContent = 'Copied ✓';
+            if (btn.classList.contains('btn')) {
+                btn.style.minWidth = btn.offsetWidth + 'px';
+                btn.textContent = 'Copied ✓';
+            }
             clearTimeout(copyTimer);
             copyTimer = setTimeout(() => {
                 btn.classList.remove('copied');
-                if (btn.classList.contains('btn')) btn.textContent = 'Copy Email Address';
+                if (btn.classList.contains('btn')) {
+                    btn.style.minWidth = '';
+                    btn.textContent = 'Copy Email Address';
+                }
             }, 2000);
         });
     });
