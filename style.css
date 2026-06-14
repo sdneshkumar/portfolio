@@ -1098,13 +1098,15 @@ img { max-width: 100%; display: block; }
     .nav-container { padding: 0 16px; }
 }
 
-/* Touch devices — disable hover transforms to avoid sticky states on tap */
+/* Touch devices — disable hover states to avoid sticky states on tap */
 @media (hover: none) {
     .skill-category:hover,
     .timeline-card:hover,
     .project-card:hover,
     .contact-card:hover,
     .edu-card:hover,
-    .social-link:hover,
-    .btn:hover { transform: none; }
+    .social-link:hover { transform: none; }
+    .btn-primary:hover { filter: none; box-shadow: none; transform: none; }
+    .btn-outline:hover { background: transparent; color: var(--accent); transform: none; }
+    .skill-icon-card:hover { transform: none; border-color: var(--border); box-shadow: none; background: var(--bg-card); }
 }
