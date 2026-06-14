@@ -58,19 +58,21 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Copy email to clipboard
-const copyToast = document.getElementById('copyToast');
 let copyTimer = null;
 
 document.querySelectorAll('.copy-email-trigger').forEach(btn => {
     btn.addEventListener('click', () => {
         navigator.clipboard.writeText('sdineshkumar1208@gmail.com').then(() => {
-            document.querySelectorAll('.copy-email-trigger').forEach(b => b.classList.remove('copied'));
+            document.querySelectorAll('.copy-email-trigger').forEach(b => {
+                b.classList.remove('copied');
+                if (b.classList.contains('btn')) b.textContent = 'Copy Email Address';
+            });
             btn.classList.add('copied');
-            copyToast.classList.add('show');
+            if (btn.classList.contains('btn')) btn.textContent = 'Copied ✓';
             clearTimeout(copyTimer);
             copyTimer = setTimeout(() => {
                 btn.classList.remove('copied');
-                copyToast.classList.remove('show');
+                if (btn.classList.contains('btn')) btn.textContent = 'Copy Email Address';
             }, 2000);
         });
     });
