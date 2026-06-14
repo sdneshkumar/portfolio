@@ -238,7 +238,12 @@
                             <li>Built a multi-tier <strong>real-time data pipeline</strong> (cloud → MSO provider → pooler sync) with IndexedDB caching fallback to ensure uninterrupted playback during network failures.</li>
                             <li>Integrated an <strong>AES-256-CBC encrypted content pipeline</strong> (Web Crypto API / PBKDF2) for secure decryption of catalog, subscription, and EPG data ensuring end-to-end content security.</li>
                             <li>Engineered a <strong>subscription lifecycle management system</strong> handling Active, Deactive, Suspend, Blacklist, and Fresh states with real-time UI updates.</li>
-                            <li>Developed an <strong>EPG data pipeline</strong> with a channel-keyed, time-sorted map for "Now Playing" display, and a CDN/DRM health monitoring dashboard with real-time latency indicators.</li>
+                            <li>Independently developed and deployed <strong>Samsung Tizen web apps</strong> (.wgt packages) from scratch using Samsung Developer APIs — including app signing, privilege declarations, and certification configuration.</li>
+                            <li>Built a <strong>cross-platform abstraction layer</strong> supporting Samsung Tizen, Android TV, LG WebOS, and browser environments from a single codebase with graceful platform-specific fallbacks.</li>
+                            <li>Engineered a <strong>3-tier HLS video caching system</strong> (memory → IndexedDB → live stream) using a custom HLS.js integration with adaptive bitrate tuning — eliminating black screen on channel switches.</li>
+                            <li>Implemented an <strong>OTA (over-the-air) update mechanism</strong> with dynamic script injection from encrypted server payloads, enabling silent app deployments without manual TV updates.</li>
+                            <li>Handled <strong>Tizen-specific challenges</strong> independently — remote key capture-phase event handling, DHCP stabilization delays, MAC-based device fingerprinting, and Samsung OS network dialog prevention.</li>
+                            <li>Diagnosed and resolved <strong>Samsung Tizen API backward compatibility</strong> failures where newer APIs broke on older TV models — independently researched Samsung Developer documentation, identified version-specific API differences, and implemented conditional fallback logic to ensure cross-generation device support.</li>
                         </ul>
                     </div>
                 </div>
