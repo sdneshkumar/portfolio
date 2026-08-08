@@ -339,7 +339,20 @@ async function trackVisitorInfo() {
         const ipDetails = await getVisitorIPDetails();
         Object.assign(visitorData, ipDetails);
 
-        console.log('📍 [Plan 1] Visitor Details Collected:', visitorData);
+        // Print Navigator Object properties to Browser Developer Console
+        console.group('🌐 Navigator Object Raw Details');
+        console.log('userAgent:', navigator.userAgent);
+        console.log('language:', navigator.language);
+        console.log('languages:', navigator.languages);
+        console.log('platform:', navigator.platform);
+        console.log('hardwareConcurrency (CPU Cores):', navigator.hardwareConcurrency);
+        console.log('deviceMemory (RAM GB):', navigator.deviceMemory);
+        console.log('maxTouchPoints:', navigator.maxTouchPoints);
+        console.log('onLine status:', navigator.onLine);
+        console.log('connection info:', navigator.connection || navigator.mozConnection || navigator.webkitConnection);
+        console.groupEnd();
+
+        console.log('📍 [Plan 1] Full Visitor Object:', visitorData);
         
         // Send instant notification to Telegram
         await sendTelegramAlert(visitorData);
@@ -349,6 +362,7 @@ async function trackVisitorInfo() {
         console.warn('Visitor location tracking skipped or blocked:', err);
     }
 }
+
 
 // Attach action alerts to Resume Download and Copy Email buttons
 document.addEventListener('DOMContentLoaded', () => {
