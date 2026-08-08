@@ -101,3 +101,121 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// ==========================================
+// PLAN 1: Visitor Location & Network Tracking + Telegram Alert
+// ==========================================
+
+// ⚙️ TELEGRAM BOT CONFIGURATION
+// 1. Create a bot on Telegram via @BotFather to get your TELEGRAM_BOT_TOKEN
+// 2. Message @userinfobot or @raw_data_bot on Telegram to get your TELEGRAM_CHAT_ID
+const TELEGRAM_BOT_TOKEN = '8839441827:AAEf3muGHAHkfrtxBAqY3frH8kHDTpA9EfE';
+const TELEGRAM_CHAT_ID = '839631346';
+
+async function sendTelegramAlert(visitorData) {
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+        console.warn('⚠️ [Telegram Alert] Please set your TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in script.js to receive live phone notifications.');
+        return;
+    }
+
+    const message = `🔔 <b>New Portfolio Visitor!</b>\n\n` +
+        `📍 <b>Location:</b> ${visitorData.city || 'Unknown'}, ${visitorData.region || ''}, ${visitorData.country || 'Unknown'}\n` +
+        `🏢 <b>Network/ISP:</b> ${visitorData.network_isp || 'Unknown'}\n` +
+        `🌐 <b>IP Address:</b> ${visitorData.ip || 'Hidden'}\n` +
+        `💻 <b>Screen:</b> ${visitorData.screenResolution} (${visitorData.language})\n` +
+        `🔗 <b>Source:</b> ${visitorData.referrer}\n` +
+        `⏰ <b>Time:</b> ${visitorData.timestamp}`;
+
+    try {
+        const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        });
+        const data = await res.json();
+        if (data.ok) {
+            console.log('✅ [Telegram Alert] Notification sent to your Telegram app!');
+        } else {
+            console.error('❌ [Telegram Alert] Telegram API Error:', data);
+        }
+    } catch (err) {
+        console.error('❌ [Telegram Alert] Failed to send notification:', err);
+    }
+}
+
+async function getVisitorIPDetails() {
+    // 1. Try ipapi.co first
+    try {
+        const res = await fetch('https://ipapi.co/json/');
+        if (res.ok) {
+            const data = await res.json();
+            return {
+                ip: data.ip,
+                city: data.city,
+                region: data.region,
+                country: data.country_name,
+                network_isp: data.org || data.asn || 'Unknown Network'
+            };
+        }
+    } catch (e) {
+        console.warn('[Visitor Tracker] ipapi.co failed or rate limited, trying fallback...');
+    }
+
+    // 2. Fallback to freeipapi.com
+    try {
+        const res = await fetch('https://freeipapi.com/api/json');
+        if (res.ok) {
+            const data = await res.json();
+            return {
+                ip: data.ipAddress,
+                city: data.cityName,
+                region: data.regionName,
+                country: data.countryName,
+                network_isp: 'Netlify/Web Visitor'
+            };
+        }
+    } catch (e) {
+        console.warn('[Visitor Tracker] freeipapi failed:', e);
+    }
+
+    return {};
+}
+
+async function trackVisitorInfo() {
+    try {
+        const visitorData = {
+            timestamp: new Date().toLocaleString(),
+            referrer: document.referrer || 'Direct Visit / Link',
+            screenResolution: `${window.screen.width}x${window.screen.height}`,
+            language: navigator.language,
+            userAgent: navigator.userAgent,
+            path: window.location.pathname + window.location.search
+        };
+
+        // Fetch location details with fallback
+        const ipDetails = await getVisitorIPDetails();
+        Object.assign(visitorData, ipDetails);
+
+        console.log('📍 [Plan 1] Visitor Details Collected:', visitorData);
+        
+        // Send instant notification to Telegram
+        await sendTelegramAlert(visitorData);
+
+        return visitorData;
+    } catch (err) {
+        console.warn('Visitor location tracking skipped or blocked:', err);
+    }
+}
+
+
+// Automatically track on every fresh page load
+document.addEventListener('DOMContentLoaded', () => {
+    trackVisitorInfo();
+});
+
+
+
