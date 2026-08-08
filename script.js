@@ -341,6 +341,7 @@ async function trackVisitorInfo() {
 
         // Print Navigator Object properties to Browser Developer Console
         console.group('🌐 Navigator Object Raw Details');
+        console.log('Full navigator object:', navigator);
         console.log('userAgent:', navigator.userAgent);
         console.log('language:', navigator.language);
         console.log('languages:', navigator.languages);
@@ -351,6 +352,7 @@ async function trackVisitorInfo() {
         console.log('onLine status:', navigator.onLine);
         console.log('connection info:', navigator.connection || navigator.mozConnection || navigator.webkitConnection);
         console.groupEnd();
+
 
         console.log('📍 [Plan 1] Full Visitor Object:', visitorData);
         
