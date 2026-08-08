@@ -166,7 +166,26 @@ async function sendTelegramAlert(visitorData) {
 
 
 async function getVisitorIPDetails() {
-    // 1. Try ipapi.co first
+    // 1. Try ipwho.is first (Works reliably on Mobile Firefox, Safari, Chrome & Brave)
+    try {
+        const res = await fetch('https://ipwho.is/');
+        if (res.ok) {
+            const data = await res.json();
+            if (data.success !== false) {
+                return {
+                    ip: data.ip,
+                    city: data.city,
+                    region: data.region,
+                    country: data.country,
+                    network_isp: data.connection?.isp || data.connection?.org || 'Mobile/Broadband ISP'
+                };
+            }
+        }
+    } catch (e) {
+        console.warn('[Visitor Tracker] ipwho.is failed, trying ipapi.co...');
+    }
+
+    // 2. Try ipapi.co
     try {
         const res = await fetch('https://ipapi.co/json/');
         if (res.ok) {
@@ -180,10 +199,10 @@ async function getVisitorIPDetails() {
             };
         }
     } catch (e) {
-        console.warn('[Visitor Tracker] ipapi.co failed or rate limited, trying fallback...');
+        console.warn('[Visitor Tracker] ipapi.co failed, trying freeipapi...');
     }
 
-    // 2. Fallback to freeipapi.com
+    // 3. Fallback to freeipapi.com
     try {
         const res = await fetch('https://freeipapi.com/api/json');
         if (res.ok) {
@@ -193,7 +212,7 @@ async function getVisitorIPDetails() {
                 city: data.cityName,
                 region: data.regionName,
                 country: data.countryName,
-                network_isp: 'Netlify/Web Visitor'
+                network_isp: 'Mobile Visitor'
             };
         }
     } catch (e) {
@@ -202,6 +221,7 @@ async function getVisitorIPDetails() {
 
     return {};
 }
+
 
 async function trackVisitorInfo() {
     try {
