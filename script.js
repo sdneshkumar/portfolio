@@ -112,13 +112,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const TELEGRAM_BOT_TOKEN = '8839441827:AAEf3muGHAHkfrtxBAqY3frH8kHDTpA9EfE';
 const TELEGRAM_CHAT_ID = '839631346';
 
+function detectVisitorCategory(userAgent, isp) {
+    const ua = (userAgent || '').toLowerCase();
+    const net = (isp || '').toLowerCase();
+
+    const botKeywords = ['bot', 'crawler', 'spider', 'headless', 'phantom', 'puppeteer', 'lighthouse', 'pingdom', 'gtmetrix', 'netlify', 'vercel', 'semrush', 'ahrefs', 'googlebot'];
+    const cloudNetworks = ['amazon', 'aws', 'hostroyale', 'digitalocean', 'linode', 'hetzner', 'azure', 'google cloud', 'ovh'];
+
+    if (botKeywords.some(k => ua.includes(k)) || cloudNetworks.some(n => net.includes(n))) {
+        return '🤖 Automated Bot / Cloud Crawler';
+    }
+    return '👤 Real Human Visitor';
+}
+
 async function sendTelegramAlert(visitorData) {
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
         console.warn('⚠️ [Telegram Alert] Please set your TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in script.js to receive live phone notifications.');
         return;
     }
 
-    const message = `🔔 <b>New Portfolio Visitor!</b>\n\n` +
+    const visitorCategory = detectVisitorCategory(visitorData.userAgent, visitorData.network_isp);
+    const headerIcon = visitorCategory.includes('Bot') ? '🤖' : '🔔';
+
+    const message = `${headerIcon} <b>New Portfolio Visit!</b>\n` +
+        `<b>Type:</b> ${visitorCategory}\n\n` +
         `📍 <b>Location:</b> ${visitorData.city || 'Unknown'}, ${visitorData.region || ''}, ${visitorData.country || 'Unknown'}\n` +
         `🏢 <b>Network/ISP:</b> ${visitorData.network_isp || 'Unknown'}\n` +
         `🌐 <b>IP Address:</b> ${visitorData.ip || 'Hidden'}\n` +
@@ -146,6 +163,7 @@ async function sendTelegramAlert(visitorData) {
         console.error('❌ [Telegram Alert] Failed to send notification:', err);
     }
 }
+
 
 async function getVisitorIPDetails() {
     // 1. Try ipapi.co first
