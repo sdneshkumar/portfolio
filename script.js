@@ -187,10 +187,7 @@ function getHardwareSpecs() {
 }
 
 async function sendTelegramAlert(visitorData) {
-    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-        console.warn('⚠️ [Telegram Alert] Please set your TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in script.js to receive live phone notifications.');
-        return;
-    }
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
 
     const visitorCategory = detectVisitorCategory(visitorData.userAgent, visitorData.network_isp);
     const headerIcon = visitorCategory.includes('Bot') ? '🤖' : '🔔';
@@ -214,7 +211,7 @@ async function sendTelegramAlert(visitorData) {
         `⏰ <b>Time:</b> ${visitorData.timestamp}`;
 
     try {
-        const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -223,15 +220,7 @@ async function sendTelegramAlert(visitorData) {
                 parse_mode: 'HTML'
             })
         });
-        const data = await res.json();
-        if (data.ok) {
-            console.log('✅ [Telegram Alert] Notification sent to your Telegram app!');
-        } else {
-            console.error('❌ [Telegram Alert] Telegram API Error:', data);
-        }
-    } catch (err) {
-        console.error('❌ [Telegram Alert] Failed to send notification:', err);
-    }
+    } catch (err) {}
 }
 
 async function sendActionAlert(actionName) {
@@ -251,13 +240,11 @@ async function sendActionAlert(actionName) {
                 parse_mode: 'HTML'
             })
         });
-    } catch (err) {
-        console.error('Failed to send action alert:', err);
-    }
+    } catch (err) {}
 }
 
 async function getVisitorIPDetails() {
-    // 1. Try ipwho.is first (Works reliably on Mobile Firefox, Safari, Chrome & Brave)
+    // 1. Try ipwho.is first
     try {
         const res = await fetch('https://ipwho.is/');
         if (res.ok) {
@@ -272,9 +259,7 @@ async function getVisitorIPDetails() {
                 };
             }
         }
-    } catch (e) {
-        console.warn('[Visitor Tracker] ipwho.is failed, trying ipapi.co...');
-    }
+    } catch (e) {}
 
     // 2. Try ipapi.co
     try {
@@ -289,9 +274,7 @@ async function getVisitorIPDetails() {
                 network_isp: data.org || data.asn || 'Unknown Network'
             };
         }
-    } catch (e) {
-        console.warn('[Visitor Tracker] ipapi.co failed, trying freeipapi...');
-    }
+    } catch (e) {}
 
     // 3. Fallback to freeipapi.com
     try {
@@ -306,9 +289,7 @@ async function getVisitorIPDetails() {
                 network_isp: 'Mobile Visitor'
             };
         }
-    } catch (e) {
-        console.warn('[Visitor Tracker] freeipapi failed:', e);
-    }
+    } catch (e) {}
 
     return {};
 }
@@ -339,32 +320,12 @@ async function trackVisitorInfo() {
         const ipDetails = await getVisitorIPDetails();
         Object.assign(visitorData, ipDetails);
 
-        // Print Navigator Object properties to Browser Developer Console
-        console.group('🌐 Navigator Object Raw Details');
-        console.log('Full navigator object:', navigator);
-        console.log('userAgent:', navigator.userAgent);
-        console.log('language:', navigator.language);
-        console.log('languages:', navigator.languages);
-        console.log('platform:', navigator.platform);
-        console.log('hardwareConcurrency (CPU Cores):', navigator.hardwareConcurrency);
-        console.log('deviceMemory (RAM GB):', navigator.deviceMemory);
-        console.log('maxTouchPoints:', navigator.maxTouchPoints);
-        console.log('onLine status:', navigator.onLine);
-        console.log('connection info:', navigator.connection || navigator.mozConnection || navigator.webkitConnection);
-        console.groupEnd();
-
-
-        console.log('📍 [Plan 1] Full Visitor Object:', visitorData);
-        
         // Send instant notification to Telegram
         await sendTelegramAlert(visitorData);
 
         return visitorData;
-    } catch (err) {
-        console.warn('Visitor location tracking skipped or blocked:', err);
-    }
+    } catch (err) {}
 }
-
 
 // Attach action alerts to Resume Download and Copy Email buttons
 document.addEventListener('DOMContentLoaded', () => {
@@ -384,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 
 
 
