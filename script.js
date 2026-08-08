@@ -103,12 +103,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ==========================================
-// PLAN 1: Visitor Location & Network Tracking + Telegram Alert
+// PLAN 1: Rich Visitor Analytics & Telegram Alerts
 // ==========================================
 
-// ⚙️ TELEGRAM BOT CONFIGURATION
-// 1. Create a bot on Telegram via @BotFather to get your TELEGRAM_BOT_TOKEN
-// 2. Message @userinfobot or @raw_data_bot on Telegram to get your TELEGRAM_CHAT_ID
 const TELEGRAM_BOT_TOKEN = '8839441827:AAEf3muGHAHkfrtxBAqY3frH8kHDTpA9EfE';
 const TELEGRAM_CHAT_ID = '839631346';
 
@@ -125,6 +122,70 @@ function detectVisitorCategory(userAgent, isp) {
     return '👤 Real Human Visitor';
 }
 
+function getOSAndDevice(ua) {
+    const userAgent = ua || navigator.userAgent;
+    let os = 'Unknown OS';
+    let device = 'Desktop';
+
+    if (/iPhone/i.test(userAgent)) {
+        os = 'iOS (iPhone)';
+        device = '📱 Mobile';
+    } else if (/iPad/i.test(userAgent)) {
+        os = 'iPadOS';
+        device = '📱 Tablet';
+    } else if (/Android/i.test(userAgent)) {
+        os = 'Android Mobile';
+        device = '📱 Mobile';
+    } else if (/Windows/i.test(userAgent)) {
+        os = 'Windows PC';
+        device = '💻 Desktop';
+    } else if (/Macintosh|Mac OS/i.test(userAgent)) {
+        os = 'macOS';
+        device = '💻 Mac';
+    } else if (/Linux/i.test(userAgent)) {
+        os = 'Linux';
+        device = '💻 Desktop';
+    }
+
+    return { os, device };
+}
+
+function getNetworkInfo() {
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (conn) {
+        const type = conn.effectiveType ? conn.effectiveType.toUpperCase() : '';
+        const downlink = conn.downlink ? `${conn.downlink} Mbps` : '';
+        return [type, downlink].filter(Boolean).join(' ');
+    }
+    return null;
+}
+
+async function getBatteryInfo() {
+    if ('getBattery' in navigator) {
+        try {
+            const battery = await navigator.getBattery();
+            const level = Math.round(battery.level * 100);
+            const status = battery.charging ? '⚡ Charging' : '🔋 Unplugged';
+            return `${level}% (${status})`;
+        } catch (e) {
+            return null;
+        }
+    }
+    return null;
+}
+
+function getHardwareSpecs() {
+    const cores = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} CPU Cores` : null;
+    const ram = navigator.deviceMemory ? `${navigator.deviceMemory} GB RAM` : null;
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+
+    const specs = [cores, ram].filter(Boolean).join(' | ');
+    return {
+        specs: specs || null,
+        timezone: tz
+    };
+}
+
 async function sendTelegramAlert(visitorData) {
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
         console.warn('⚠️ [Telegram Alert] Please set your TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in script.js to receive live phone notifications.');
@@ -134,12 +195,21 @@ async function sendTelegramAlert(visitorData) {
     const visitorCategory = detectVisitorCategory(visitorData.userAgent, visitorData.network_isp);
     const headerIcon = visitorCategory.includes('Bot') ? '🤖' : '🔔';
 
+    const batteryLine = visitorData.battery ? `\n🔋 <b>Battery:</b> ${visitorData.battery}` : '';
+    const connectionLine = visitorData.connectionType ? `\n📶 <b>Network Speed:</b> ${visitorData.connectionType}` : '';
+    const specsLine = visitorData.hardwareSpecs ? `\n⚙️ <b>Hardware:</b> ${visitorData.hardwareSpecs}` : '';
+
     const message = `${headerIcon} <b>New Portfolio Visit!</b>\n` +
         `<b>Type:</b> ${visitorCategory}\n\n` +
         `📍 <b>Location:</b> ${visitorData.city || 'Unknown'}, ${visitorData.region || ''}, ${visitorData.country || 'Unknown'}\n` +
         `🏢 <b>Network/ISP:</b> ${visitorData.network_isp || 'Unknown'}\n` +
         `🌐 <b>IP Address:</b> ${visitorData.ip || 'Hidden'}\n` +
+        `📱 <b>Device/OS:</b> ${visitorData.device} (${visitorData.os})\n` +
         `💻 <b>Screen:</b> ${visitorData.screenResolution} (${visitorData.language})\n` +
+        `⏱️ <b>Timezone:</b> ${visitorData.timezone}` +
+        `${connectionLine}` +
+        `${batteryLine}` +
+        `${specsLine}\n` +
         `🔗 <b>Source:</b> ${visitorData.referrer}\n` +
         `⏰ <b>Time:</b> ${visitorData.timestamp}`;
 
@@ -164,6 +234,27 @@ async function sendTelegramAlert(visitorData) {
     }
 }
 
+async function sendActionAlert(actionName) {
+    if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+
+    const message = `🎯 <b>Portfolio Action Triggered!</b>\n\n` +
+        `👉 <b>Action:</b> ${actionName}\n` +
+        `⏰ <b>Time:</b> ${new Date().toLocaleString()}`;
+
+    try {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
+            })
+        });
+    } catch (err) {
+        console.error('Failed to send action alert:', err);
+    }
+}
 
 async function getVisitorIPDetails() {
     // 1. Try ipwho.is first (Works reliably on Mobile Firefox, Safari, Chrome & Brave)
@@ -222,15 +313,25 @@ async function getVisitorIPDetails() {
     return {};
 }
 
-
 async function trackVisitorInfo() {
     try {
+        const osDevice = getOSAndDevice();
+        const hwSpecs = getHardwareSpecs();
+        const battery = await getBatteryInfo();
+        const connectionType = getNetworkInfo();
+
         const visitorData = {
             timestamp: new Date().toLocaleString(),
             referrer: document.referrer || 'Direct Visit / Link',
             screenResolution: `${window.screen.width}x${window.screen.height}`,
             language: navigator.language,
             userAgent: navigator.userAgent,
+            os: osDevice.os,
+            device: osDevice.device,
+            hardwareSpecs: hwSpecs.specs,
+            timezone: hwSpecs.timezone,
+            battery: battery,
+            connectionType: connectionType,
             path: window.location.pathname + window.location.search
         };
 
@@ -249,11 +350,25 @@ async function trackVisitorInfo() {
     }
 }
 
-
-// Automatically track on every fresh page load
+// Attach action alerts to Resume Download and Copy Email buttons
 document.addEventListener('DOMContentLoaded', () => {
     trackVisitorInfo();
+
+    // Track Resume Downloads
+    document.querySelectorAll('a[href*="cv.pdf"]').forEach(link => {
+        link.addEventListener('click', () => {
+            sendActionAlert('📄 Downloaded Resume (dinesh_kumar_cv.pdf)');
+        });
+    });
+
+    // Track Copy Email Clicks
+    document.querySelectorAll('.copy-email-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            sendActionAlert('📧 Copied Email Address');
+        });
+    });
 });
+
 
 
 
