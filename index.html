@@ -3,404 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dinesh Kumar S — Full Stack Developer specializing in Node.js, Vue.js, and IPTV streaming applications.">
+    <meta name="description" content="Dinesh Kumar S — Full Stack Developer in Bangalore. Node.js, Vue.js, IPTV streaming and Smart TV apps (Samsung Tizen, Android TV, LG webOS).">
+    <meta name="theme-color" content="#0b0c0f">
     <title>Dinesh Kumar S — Full Stack Developer</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230b0c0f%27/%3E%3Ctext x=%2712%27 y=%2744%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2732%27 fill=%27%23eceef2%27%3Edk%3C/text%3E%3Ccircle cx=%2750%27 cy=%2742%27 r=%274%27 fill=%27%23c8f169%27/%3E%3C/svg%3E">
+    <link rel="canonical" href="https://dineshs-dev.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dinesh Kumar S — Full Stack &amp; Smart TV Engineer">
+    <meta property="og:description" content="Node.js, Vue.js and IPTV. One codebase shipped to Samsung Tizen, Android TV and LG webOS.">
+    <meta property="og:url" content="https://dineshs-dev.netlify.app/">
+    <meta property="og:image" content="https://dineshs-dev.netlify.app/dinesh.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dinesh Kumar S",
+        "jobTitle": "Full Stack Developer",
+        "url": "https://dineshs-dev.netlify.app/",
+        "email": "mailto:sdineshkumar1208@gmail.com",
+        "image": "https://dineshs-dev.netlify.app/dinesh.png",
+        "worksFor": { "@type": "Organization", "name": "Infynect Labs Private Limited" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
+        "sameAs": ["https://www.linkedin.com/in/sdneshkumar", "https://github.com/sdneshkumar"],
+        "knowsAbout": ["Node.js", "Vue.js", "JavaScript", "IPTV", "Samsung Tizen", "Android TV", "LG webOS", "HLS", "DRM", "PostgreSQL", "MongoDB"]
+    }
+    </script>
     <script>
-        (function() {
-            var theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        (function () {
+            var theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', theme);
         })();
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <a class="skip" href="#top">Skip to content</a>
 
-    <!-- NAV -->
-    <nav class="nav" id="nav">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">DK<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <header class="nav" id="nav">
+        <div class="wrap nav-inner">
+            <a href="#top" class="logo" aria-label="Home">dk<span>.</span></a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#fit">Why me</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
+            </nav>
             <div class="nav-right">
-                <a href="dinesh_kumar_cv.pdf" download class="btn btn-primary btn-sm nav-cv-btn">Download CV</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                 </button>
-                <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
-                    <span></span><span></span><span></span>
+                <a href="dinesh_kumar_cv.pdf" download class="btn btn-solid btn-sm nav-cv">Resume</a>
+                <button class="icon-btn nav-burger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
                 </button>
             </div>
         </div>
-        <div class="nav-mobile" id="navMobile">
+        <nav class="nav-mobile" id="navMobile" aria-label="Mobile">
             <a href="#about">About</a>
+            <a href="#fit">Why me</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#education">Education</a>
+            <a href="#work">Work</a>
             <a href="#contact">Contact</a>
-        </div>
-    </nav>
+            <a href="dinesh_kumar_cv.pdf" download>Download resume</a>
+        </nav>
+    </header>
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="hero-bg-grid"></div>
-        <div class="container hero-container">
-            <div class="hero-text">
-                <p class="hero-greeting">Hi, I'm</p>
-                <h1 class="hero-name">Dinesh Kumar S</h1>
-                <h2 class="hero-title">Full Stack Developer</h2>
-                <p class="hero-bio">3+ years building scalable web &amp; Smart TV applications. Specialized in Node.js, Vue.js, IPTV streaming, and DRM security systems.</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="dinesh_kumar_cv.pdf" download class="btn btn-outline">Download CV</a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://www.linkedin.com/in/sdneshkumar" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://github.com/sdneshkumar" target="_blank" rel="noopener" class="social-link" title="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-image-wrapper">
-                    <img src="dinesh.png" alt="Dinesh Kumar S" />
-                    <div class="hero-image-ring"></div>
-                </div>
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    <span>Open to opportunities</span>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-dot"></div>
-        </div>
-    </section>
+    <main id="top">
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I'm a Full Stack Developer with <strong>3+ years of experience</strong> building scalable web and Smart TV applications at Infynect Labs. My work spans across the full stack — from architecting RESTful APIs to building production-grade IPTV clients for Android TV.</p>
-                    <p>I specialize in <strong>Node.js, Vue.js, and Vanilla JavaScript</strong>, and have deep hands-on experience in DRM security, real-time data pipelines, and IPTV streaming — areas that demand both precision and performance engineering.</p>
-                    <p>Currently based in <strong>Bangalore</strong>, I thrive in Agile environments and enjoy mentoring junior engineers while delivering high-impact features.</p>
-                    <div class="about-stats">
-                        <div class="stat fade-in">
-                            <span class="stat-number">3+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat fade-in">
-                            <span class="stat-number">20%</span>
-                            <span class="stat-label">Faster App Performance</span>
-                        </div>
-                        <div class="stat fade-in">
-                            <span class="stat-number">30%</span>
-                            <span class="stat-label">Faster DB Queries</span>
-                        </div>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div class="hero-copy">
+                    <p class="status reveal"><span class="pulse"></span> Open to full-time roles · Bangalore</p>
+                    <h1 class="hero-name reveal">Dinesh<br>Kumar S<span class="dot">.</span></h1>
+                    <p class="hero-role reveal">Full Stack Developer <span class="sep">/</span> Smart TV &amp; IPTV engineer</p>
+                    <p class="hero-bio reveal">3.5+ years building scalable web platforms and production IPTV clients. I work across Node.js, Vue.js and vanilla JavaScript, and ship the same codebase to Samsung Tizen, Android TV and LG webOS.</p>
+                    <dl class="glance reveal" aria-label="Recruiter quick view">
+                        <div><dt class="mono">Open to</dt><dd>Senior Full Stack · Smart TV / CTV Web · Streaming platform</dd></div>
+                        <div><dt class="mono">Stack</dt><dd>Node.js · Vue.js · JS · PostgreSQL · MongoDB</dd></div>
+                        <div><dt class="mono">Based in</dt><dd>Bangalore, India</dd></div>
+                    </dl>
+                    <div class="hero-cta reveal">
+                        <a href="#contact" class="btn btn-solid">Get in touch
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <a href="dinesh_kumar_cv.pdf" download class="btn btn-ghost">Download resume</a>
+                    </div>
+                    <div class="hero-links reveal">
+                        <a href="https://github.com/sdneshkumar" target="_blank" rel="noopener">GitHub ↗</a>
+                        <a href="https://www.linkedin.com/in/sdneshkumar" target="_blank" rel="noopener">LinkedIn ↗</a>
+                        <a href="mailto:sdineshkumar1208@gmail.com">Email ↗</a>
+                        <button type="button" class="link-btn" id="previewResumeHero">Preview resume</button>
+                    </div>
+                </div>
+                <div class="hero-visual reveal">
+                    <div class="portrait">
+                        <img src="dinesh.png" alt="Portrait of Dinesh Kumar S" width="480" height="560" fetchpriority="high" decoding="async">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SKILLS -->
-    <section class="section section-alt" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Skills</h2>
-            </div>
-            <div class="skills-new">
-                <div class="skill-group fade-in">
-                    <p class="skill-group-label">Languages &amp; Frameworks</p>
-                    <div class="skill-icon-grid">
-                        <div class="skill-icon-card">
-                            <i class="devicon-javascript-plain colored"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-icon-card">
-                            <i class="devicon-vuejs-plain colored"></i>
-                            <span>Vue.js</span>
-                        </div>
-                        <div class="skill-icon-card">
-                            <i class="devicon-nodejs-plain colored"></i>
-                            <span>Node.js</span>
-                        </div>
-                        <div class="skill-icon-card">
-                            <i class="devicon-express-original"></i>
-                            <span>Express.js</span>
-                        </div>
-                        <div class="skill-icon-card">
-                            <i class="devicon-html5-plain colored"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="skill-icon-card">
-                            <i class="devicon-css3-plain colored"></i>
-                            <span>CSS3</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-group-row">
-                    <div class="skill-group fade-in">
-                        <p class="skill-group-label">Databases</p>
-                        <div class="skill-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="devicon-postgresql-plain colored"></i>
-                                <span>PostgreSQL</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="devicon-mysql-plain colored"></i>
-                                <span>MySQL</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="devicon-mongodb-plain colored"></i>
-                                <span>MongoDB</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="devicon-firefox-plain colored"></i>
-                                <span>IndexedDB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="skill-group fade-in">
-                        <p class="skill-group-label">Tools &amp; Platforms</p>
-                        <div class="skill-icon-grid">
-                            <div class="skill-icon-card">
-                                <i class="devicon-git-plain colored"></i>
-                                <span>Git</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="devicon-jira-plain colored"></i>
-                                <span>Jira</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="devicon-android-plain colored"></i>
-                                <span>Android TV</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <div class="tizen-icon-wrap"><img src="samsung-tizen-os.png" width="30" height="30" alt="Tizen Studio" style="object-fit:contain;"></div>
-                                <span>Tizen Studio</span>
-                            </div>
-                            <div class="skill-icon-card">
-                                <i class="devicon-github-original"></i>
-                                <span>GitHub</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-group fade-in">
-                    <p class="skill-group-label">Streaming &amp; Security</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">IPTV</span>
-                        <span class="skill-tag">DRM</span>
-                        <span class="skill-tag">AES-256-CBC</span>
-                        <span class="skill-tag">Web Crypto API</span>
-                        <span class="skill-tag">EPG</span>
-                        <span class="skill-tag">PBKDF2</span>
-                        <span class="skill-tag">RESTful APIs</span>
-                        <span class="skill-tag">Agile</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Work Experience</h2>
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="wrap">
+                <p class="eyebrow mono">01 — About</p>
+                <div class="about-grid">
+                    <h2 class="display reveal">I build the software behind the screen — from the API to the remote control.</h2>
+                    <div class="about-body reveal">
+                        <p>I'm a Full Stack Developer at <strong>Infynect Labs</strong> with 3.5+ years of experience in scalable web applications, RESTful APIs, and performance-focused front ends. My day-to-day spans SQL/NoSQL design, secure authentication, production troubleshooting, and Agile delivery.</p>
+                        <p>Lately that means architecting a production IPTV client from scratch — encrypted content pipelines, multi-tier caching, OTA updates — and getting it to behave on TVs that were never designed for modern web code.</p>
+                        <p>I mentor junior developers, use AI-assisted tooling (Codex, Claude Code, Cursor) to move faster without cutting corners, and care about shipping things that stay up.</p>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat reveal"><span class="stat-n">3.5<em>+</em></span><span class="stat-l">Years of experience</span></div>
+                    <div class="stat reveal"><span class="stat-n">20<em>%</em></span><span class="stat-l">Faster app performance after Angular → Vue migration</span></div>
+                    <div class="stat reveal"><span class="stat-n">30<em>%</em></span><span class="stat-l">Faster data retrieval via query optimisation</span></div>
+                    <div class="stat reveal"><span class="stat-n">3</span><span class="stat-l">TV platforms from one codebase</span></div>
+                </div>
             </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card fade-in">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Senior Software Engineer</h3>
-                                <p class="timeline-company">Infynect Labs Private Limited</p>
-                                <p class="timeline-project">Project: Launcher Web IPTV (Smart TV / Android TV)</p>
-                            </div>
-                            <span class="timeline-date">Sep 2025 – Present</span>
-                        </div>
-                        <ul class="timeline-points">
-                            <li>Architected a production-grade <strong>IPTV client</strong> for Android TV/Web using Vanilla JavaScript with live TV streaming, channel management, and real-time subscription handling.</li>
-                            <li>Built a multi-tier <strong>real-time data pipeline</strong> (cloud → MSO provider → pooler sync) with IndexedDB caching fallback to ensure uninterrupted playback during network failures.</li>
-                            <li>Integrated an <strong>AES-256-CBC encrypted content pipeline</strong> (Web Crypto API / PBKDF2) for secure decryption of catalog, subscription, and EPG data ensuring end-to-end content security.</li>
-                            <li>Engineered a <strong>subscription lifecycle management system</strong> handling Active, Deactive, Suspend, Blacklist, and Fresh states with real-time UI updates.</li>
-                            <li>Independently developed and deployed <strong>Samsung Tizen web apps</strong> (.wgt packages) from scratch using Samsung Developer APIs — including app signing, privilege declarations, and certification configuration.</li>
-                            <li>Built a <strong>cross-platform abstraction layer</strong> supporting Samsung Tizen, Android TV, LG WebOS, and browser environments from a single codebase with graceful platform-specific fallbacks.</li>
-                            <li>Engineered a <strong>3-tier HLS video caching system</strong> (memory → IndexedDB → live stream) using a custom HLS.js integration with adaptive bitrate tuning — eliminating black screen on channel switches.</li>
-                            <li>Implemented an <strong>OTA (over-the-air) update mechanism</strong> with dynamic script injection from encrypted server payloads, enabling silent app deployments without manual TV updates.</li>
-                            <li>Handled <strong>Tizen-specific challenges</strong> independently — remote key capture-phase event handling, DHCP stabilization delays, MAC-based device fingerprinting, and Samsung OS network dialog prevention.</li>
-                            <li>Diagnosed and resolved <strong>Samsung Tizen API backward compatibility</strong> failures where newer APIs broke on older TV models — independently researched Samsung Developer documentation, identified version-specific API differences, and implemented conditional fallback logic to ensure cross-generation device support.</li>
+        </section>
+
+        <!-- FIT -->
+        <section class="section" id="fit">
+            <div class="wrap">
+                <p class="eyebrow mono">02 — What I do best</p>
+                <h2 class="display reveal">Four things you can hand me and stop worrying about.</h2>
+                <div class="fit-grid">
+                    <article class="card fit reveal">
+                        <h3>Make one app run on every TV</h3>
+                        <p class="fit-have">Samsung Tizen, Android TV and LG webOS from a single codebase, including signing, certification and per-platform fallbacks.</p>
+                    </article>
+                    <article class="card fit reveal">
+                        <h3>Keep streaming secure and smooth</h3>
+                        <p class="fit-have">Encrypted content (AES-256-CBC), a 3-tier video cache with no black screen on channel change, and playback that survives network drops.</p>
+                    </article>
+                    <article class="card fit reveal">
+                        <h3>Own a feature end to end</h3>
+                        <p class="fit-have">Node/Express APIs, JWT auth, tuned PostgreSQL and MongoDB, Vue front ends, and production support when it breaks.</p>
+                    </article>
+                    <article class="card fit reveal">
+                        <h3>Move fast with AI tools</h3>
+                        <p class="fit-have">Codex, Claude Code and Cursor for refactoring, debugging, code analysis and documentation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="wrap">
+                <p class="eyebrow mono">03 — Skills</p>
+                <h2 class="display reveal">Tools I reach for.</h2>
+                <div class="bento">
+                    <div class="card bento-lg reveal">
+                        <h3 class="card-label mono">Languages &amp; frameworks</h3>
+                        <ul class="icon-list">
+                            <li><i class="devicon-javascript-plain colored"></i>JavaScript</li>
+                            <li><i class="devicon-vuejs-plain colored"></i>Vue.js</li>
+                            <li><i class="devicon-nodejs-plain colored"></i>Node.js</li>
+                            <li><i class="devicon-express-original"></i>Express.js</li>
+                            <li><i class="devicon-html5-plain colored"></i>HTML5</li>
+                            <li><i class="devicon-css3-plain colored"></i>CSS3</li>
                         </ul>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card fade-in">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Software Engineer – I</h3>
-                                <p class="timeline-company">Infynect Labs Private Limited</p>
-                                <p class="timeline-project">Project: SMS, DRM, HEPI</p>
-                            </div>
-                            <span class="timeline-date">Feb 2023 – Aug 2025</span>
-                        </div>
-                        <ul class="timeline-points">
-                            <li>Migrated front-end from <strong>Angular to Vue.js</strong>, achieving a 20% performance improvement; built scalable modules for Packages, Subscriptions, and Channels.</li>
-                            <li>Developed <strong>RESTful APIs</strong> with Node.js and Express.js; optimized PostgreSQL and MongoDB queries, reducing data retrieval times by 30%.</li>
-                            <li>Provided production support and issue resolution, minimizing downtime and ensuring reliable system operations.</li>
+                    <div class="card reveal">
+                        <h3 class="card-label mono">Databases</h3>
+                        <ul class="icon-list">
+                            <li><i class="devicon-postgresql-plain colored"></i>PostgreSQL</li>
+                            <li><i class="devicon-mysql-plain colored"></i>MySQL</li>
+                            <li><i class="devicon-mongodb-plain colored"></i>MongoDB</li>
+                            <li>IndexedDB</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section section-alt" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Projects</h2>
-                <p class="section-subtitle">Freelance and personal projects coming soon — stay tuned!</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card project-placeholder fade-in">
-                    <div class="project-placeholder-icon">&#128640;</div>
-                    <h3>Freelance Projects</h3>
-                    <p>Exciting freelance project details will be added here soon.</p>
-                    <div class="project-tags">
-                        <span class="skill-tag">Coming Soon</span>
+                    <div class="card reveal">
+                        <h3 class="card-label mono">Tools &amp; platforms</h3>
+                        <ul class="icon-list">
+                            <li><i class="devicon-git-plain colored"></i>Git</li>
+                            <li><i class="devicon-github-original"></i>GitHub</li>
+                            <li><i class="devicon-jira-plain colored"></i>Jira</li>
+                            <li><i class="devicon-android-plain colored"></i>Android TV</li>
+                            <li><img src="samsung-tizen-os.png" width="22" height="22" alt="" loading="lazy">Tizen</li>
+                        </ul>
+                    </div>
+                    <div class="card reveal">
+                        <h3 class="card-label mono">Auth &amp; security</h3>
+                        <div class="tags">
+                            <span>JWT</span><span>OAuth 2.0</span><span>SSO</span><span>AES-256-CBC</span><span>Web Crypto API</span><span>PBKDF2</span><span>DRM</span>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <h3 class="card-label mono">Backend &amp; streaming</h3>
+                        <div class="tags">
+                            <span>RESTful APIs</span><span>API integration</span><span>SQL optimisation</span><span>IPTV</span><span>HLS</span><span>EPG</span>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <h3 class="card-label mono">AI-assisted development</h3>
+                        <div class="tags">
+                            <span>Codex</span><span>Claude Code</span><span>Cursor</span><span>Refactoring</span><span>Debugging</span><span>Docs</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card project-placeholder fade-in">
-                    <div class="project-placeholder-icon">&#128161;</div>
-                    <h3>Personal Projects</h3>
-                    <p>Personal side projects and open-source contributions will be showcased here.</p>
-                    <div class="project-tags">
-                        <span class="skill-tag">Coming Soon</span>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+            <div class="wrap">
+                <p class="eyebrow mono">04 — Experience</p>
+                <h2 class="display reveal">Where I've worked.</h2>
+
+                <article class="job reveal">
+                    <aside class="job-meta">
+                        <p class="job-date mono">Sep 2025 — Present</p>
+                        <h3>Senior Software Engineer</h3>
+                        <p class="job-co">Infynect Labs Pvt. Ltd.</p>
+                        <p class="job-proj">Launcher Web IPTV<br>Smart TV / Android TV</p>
+                        <p class="job-sum">Promoted from Software Engineer – I. Now leads the TV client that runs on three TV platforms.</p>
+                    </aside>
+                    <ul class="job-points">
+                        <li>Architected a production-grade <strong>IPTV client</strong> for Android TV and web in vanilla JavaScript — live TV streaming, channel management, real-time subscription handling.</li>
+                        <li>Built a <strong>real-time data pipeline</strong> with an offline (IndexedDB) fallback, so playback survives network failures.</li>
+                        <li>Secured catalog, subscription and EPG data with an <strong>AES-256-CBC pipeline</strong> (Web Crypto API / PBKDF2), end to end.</li>
+                        <li>Shipped <strong>Samsung Tizen (.wgt)</strong>, Android TV and LG webOS from a single codebase, including signing and certification, with graceful per-platform fallbacks.</li>
+                        <li>Designed a <strong>3-tier HLS cache</strong> (memory → IndexedDB → live) with adaptive bitrate tuning, removing the black screen on channel switches.</li>
+                        <li>Built an <strong>OTA update mechanism</strong> for silent deployments, and independently resolved Tizen issues: DHCP stabilisation, MAC-based fingerprinting, API backward compatibility across TV generations.</li>
+                    </ul>
+                </article>
+
+                <article class="job reveal">
+                    <aside class="job-meta">
+                        <p class="job-date mono">Feb 2023 — Aug 2025</p>
+                        <h3>Software Engineer – I</h3>
+                        <p class="job-co">Infynect Labs Pvt. Ltd.</p>
+                        <p class="job-proj">SMS · DRM · HEPI</p>
+                        <p class="job-sum">Rebuilt a subscriber-management front end and its APIs for speed.</p>
+                    </aside>
+                    <ul class="job-points">
+                        <li>Migrated front ends from <strong>Angular to Vue.js</strong> and built reusable Packages, Subscriptions and Channels modules — a <strong>20%</strong> performance gain.</li>
+                        <li>Developed <strong>RESTful APIs</strong> with Node.js and Express; tuned PostgreSQL and MongoDB queries to cut retrieval time by <strong>30%</strong>.</li>
+                        <li>Implemented secure <strong>JWT-based authentication</strong> for authenticated API access and session management.</li>
+                        <li>Mentored junior developers, delivered high-priority projects on schedule, and handled production support to keep downtime low.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- WORK -->
+        <section class="section" id="work">
+            <div class="wrap">
+                <p class="eyebrow mono">05 — Selected work</p>
+                <h2 class="display reveal">Problems I've solved in production.</h2>
+                <div class="work-grid">
+                    <article class="card work reveal">
+                        <p class="work-n mono">01 · Launcher Web IPTV</p>
+                        <h3>One IPTV client for every TV</h3>
+                        <dl class="case">
+                            <div><dt class="mono">Problem</dt><dd>Smart TVs differ wildly, networks drop, and content must stay protected.</dd></div>
+                            <div><dt class="mono">Approach</dt><dd>Vanilla JS client with a platform abstraction layer, AES-256-CBC encrypted catalog/EPG, IndexedDB fallback, and OTA updates.</dd></div>
+                            <div><dt class="mono">Result</dt><dd>Runs on Tizen, Android TV and webOS from a single codebase. No black screen on channel switch. Playback continues through network failures.</dd></div>
+                        </dl>
+                        <div class="tags"><span>Vanilla JS</span><span>HLS.js</span><span>IndexedDB</span><span>Web Crypto</span><span>Tizen</span></div>
+                    </article>
+                    <article class="card work reveal">
+                        <p class="work-n mono">02 · SMS · DRM · HEPI</p>
+                        <h3>Subscriber platform, faster and leaner</h3>
+                        <dl class="case">
+                            <div><dt class="mono">Problem</dt><dd>An aging Angular front end and slow queries slowed operators managing packages, channels and subscriptions.</dd></div>
+                            <div><dt class="mono">Approach</dt><dd>Migrated to Vue.js with reusable modules, built Node/Express APIs with JWT, and tuned PostgreSQL and MongoDB queries.</dd></div>
+                            <div><dt class="mono">Result</dt><dd><strong>20%</strong> faster app performance and <strong>30%</strong> faster data retrieval.</dd></div>
+                        </dl>
+                        <div class="tags"><span>Vue.js</span><span>Node.js</span><span>PostgreSQL</span><span>MongoDB</span><span>JWT</span></div>
+                    </article>
+                </div>
+                <div class="card proof reveal">
+                    <div>
+                        <p class="work-n mono">03 · Open proof of work</p>
+                        <h3>More on GitHub, more soon</h3>
+                        <p>Freelance and personal projects with live demos and source are being added. The production work above is company-owned, so its code isn't public.</p>
                     </div>
+                    <a href="https://github.com/sdneshkumar" target="_blank" rel="noopener" class="btn btn-ghost">View GitHub ↗</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- EDUCATION -->
-    <section class="section" id="education">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Education</h2>
-            </div>
-            <div class="edu-card fade-in">
-                <div class="edu-icon">&#127891;</div>
-                <div class="edu-info">
+        <!-- EDUCATION -->
+        <section class="section section-tight" id="education">
+            <div class="wrap">
+                <p class="eyebrow mono">06 — Education</p>
+                <div class="edu reveal">
                     <h3>B.E. Mechanical Engineering</h3>
-                    <p class="edu-institution">Kongunadu College of Engineering and Technology</p>
-                    <p class="edu-date">June 2018 – May 2022</p>
+                    <p>Kongunadu College of Engineering and Technology</p>
+                    <span class="mono">Jun 2018 — May 2022</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CONTACT -->
-    <section class="section section-alt" id="contact">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-left fade-in">
-                    <p class="contact-eyebrow">Get In Touch</p>
-                    <h2 class="contact-heading">Let's work<br>together.</h2>
-                    <p class="contact-desc">Open to full-time roles and exciting opportunities. Feel free to reach out anytime!</p>
-                    <div class="contact-actions">
-                        <a href="mailto:sdineshkumar1208@gmail.com" class="btn btn-primary">Send Email</a>
-                        <button class="btn btn-outline copy-email-trigger">Copy Email Address</button>
-                    </div>
+        <!-- CONTACT -->
+        <section class="section contact" id="contact">
+            <div class="wrap">
+                <p class="eyebrow mono">07 — Contact</p>
+                <h2 class="contact-title reveal">Let's build<br>something<span class="dot">.</span></h2>
+                <p class="contact-sub reveal">Open to full-time roles. The fastest way to reach me is email or WhatsApp.</p>
+                <div class="contact-actions reveal">
+                    <a href="mailto:sdineshkumar1208@gmail.com" class="btn btn-solid">Send an email</a>
+                    <button class="btn btn-ghost copy-email" type="button">Copy email address</button>
                 </div>
-                <div class="contact-right">
-                    <div class="contact-item fade-in">
-                        <div class="contact-item-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        </div>
-                        <div class="contact-item-info">
-                            <span class="contact-item-label">Email</span>
-                            <span class="contact-item-value">sdineshkumar1208@gmail.com</span>
-                        </div>
-                        <button class="copy-btn copy-email-trigger" title="Copy email address" aria-label="Copy email address">
-                            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </button>
-                    </div>
-                    <a href="https://www.linkedin.com/in/sdneshkumar" target="_blank" rel="noopener" class="contact-item fade-in">
-                        <div class="contact-item-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        </div>
-                        <div class="contact-item-info">
-                            <span class="contact-item-label">LinkedIn</span>
-                            <span class="contact-item-value">linkedin.com/in/sdneshkumar</span>
-                        </div>
-                        <svg class="contact-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <div class="contact-item fade-in">
-                        <div class="contact-item-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <div class="contact-item-info">
-                            <span class="contact-item-label">Location</span>
-                            <span class="contact-item-value">Bangalore, India</span>
-                        </div>
-                    </div>
+                <div class="contact-meta reveal">
+                    <a href="https://www.linkedin.com/in/sdneshkumar" target="_blank" rel="noopener">LinkedIn ↗</a>
+                    <a href="https://github.com/sdneshkumar" target="_blank" rel="noopener">GitHub ↗</a>
+                    <span>Bangalore, India</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-inner">
-                <div class="footer-left">
-                    <a href="#hero" class="footer-logo">DK<span>.</span></a>
-                    <p class="footer-tagline">Full Stack Developer &middot; Bangalore, India</p>
-                </div>
-                <div class="footer-right">
-                    <a href="https://www.linkedin.com/in/sdneshkumar" target="_blank" rel="noopener" class="footer-social-link" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://github.com/sdneshkumar" target="_blank" rel="noopener" class="footer-social-link" title="GitHub">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                    </a>
-                    <a href="dinesh_kumar_cv.pdf" download class="footer-social-link" title="Download CV">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-copy">&copy; <span id="currentYear"></span> Dinesh Kumar S. All rights reserved.</p>
-            </div>
+        <div class="wrap footer-inner">
+            <p>&copy; <span id="currentYear"></span> Dinesh Kumar S</p>
+            <a href="#top">Back to top ↑</a>
         </div>
     </footer>
 
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/918608481319?text=Hi%20Dinesh%2C%20I%27m%20a%20recruiter%20and%20came%20across%20your%20portfolio.%20I%20have%20a%20relevant%20opportunity%20I%27d%20like%20to%20discuss.%20Are%20you%20open%20to%20a%20quick%20chat%3F" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/918608481319?text=Hi%20Dinesh%2C%20I%27m%20a%20recruiter%20and%20came%20across%20your%20portfolio.%20I%20have%20a%20relevant%20opportunity%20I%27d%20like%20to%20discuss.%20Are%20you%20open%20to%20a%20quick%20chat%3F" target="_blank" rel="noopener" class="whatsapp" aria-label="Chat on WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-        <span class="whatsapp-tooltip">Chat on WhatsApp</span>
     </a>
+
+
+    <dialog class="resume-dialog" id="resumeDialog" aria-label="Resume preview">
+        <div class="resume-bar">
+            <span class="mono">Resume preview</span>
+            <div>
+                <a class="btn btn-solid btn-sm" href="dinesh_kumar_cv.pdf" download>Download PDF</a>
+                <button class="icon-btn" type="button" id="closeResume" aria-label="Close preview">✕</button>
+            </div>
+        </div>
+        <div class="resume-stage">
+            <article class="sheet">
+                <header class="sheet-head">
+                    <h3>Dinesh Kumar S</h3>
+                    <p class="sheet-role">Full Stack Developer</p>
+                    <p class="sheet-contact">Bangalore, India &nbsp;·&nbsp; sdineshkumar1208@gmail.com &nbsp;·&nbsp; linkedin.com/in/sdneshkumar &nbsp;·&nbsp; dineshs-dev.netlify.app</p>
+                </header>
+                <div class="sheet-body">
+                    <section>
+                        <h4>Summary</h4>
+                        <p>Full Stack Developer with 3.5+ years of experience building scalable web applications with Node.js, Express.js, JavaScript, Angular and Vue.js. RESTful APIs, reusable UI components, SQL/NoSQL databases, secure application development and Agile collaboration.</p>
+                    </section>
+                    <section>
+                        <h4>Experience</h4>
+                        <div class="sheet-job">
+                            <div class="sheet-job-head"><strong>Senior Software Engineer</strong><span>Sep 2025 – Present</span></div>
+                            <p class="sheet-co">Infynect Labs Pvt. Ltd. · Launcher Web IPTV (Smart TV / Android TV)</p>
+                            <ul>
+                                <li>Architected a production IPTV client for Android TV and web in vanilla JavaScript.</li>
+                                <li>Built a real-time data pipeline with IndexedDB fallback and an AES-256-CBC encrypted content pipeline.</li>
+                                <li>Deployed to Samsung Tizen, Android TV and LG webOS from one codebase, with a 3-tier HLS cache and OTA updates.</li>
+                            </ul>
+                        </div>
+                        <div class="sheet-job">
+                            <div class="sheet-job-head"><strong>Software Engineer – I</strong><span>Feb 2023 – Aug 2025</span></div>
+                            <p class="sheet-co">Infynect Labs Pvt. Ltd. · SMS, DRM, HEPI</p>
+                            <ul>
+                                <li>Migrated Angular to Vue.js with reusable modules: 20% performance gain.</li>
+                                <li>Built Node.js/Express REST APIs with JWT auth and cut data retrieval time by 30%.</li>
+                                <li>Mentored junior developers and provided production support.</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h4>Skills</h4>
+                        <dl class="sheet-skills">
+                            <div><dt>Languages</dt><dd>JavaScript, Vue.js, Node.js, Express.js, HTML5, CSS3</dd></div>
+                            <div><dt>Databases</dt><dd>PostgreSQL, MySQL, MongoDB, IndexedDB</dd></div>
+                            <div><dt>Security</dt><dd>JWT, OAuth 2.0, SSO, AES-256-CBC, Web Crypto API, DRM</dd></div>
+                            <div><dt>AI tools</dt><dd>Codex, Claude Code, Cursor</dd></div>
+                            <div><dt>Platforms</dt><dd>Git, GitHub, Jira, Android TV, Samsung Tizen</dd></div>
+                        </dl>
+                    </section>
+                    <section>
+                        <h4>Education</h4>
+                        <div class="sheet-job-head"><strong>B.E. Mechanical Engineering</strong><span>Jun 2018 – May 2022</span></div>
+                        <p class="sheet-co">Kongunadu College of Engineering and Technology</p>
+                    </section>
+                </div>
+            </article>
+        </div>
+    </dialog>
 
     <script src="script.js"></script>
 </body>

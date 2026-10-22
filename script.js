@@ -1,51 +1,43 @@
-// Theme toggle (always follows device theme on load — toggle works for current session only)
+document.documentElement.classList.add('js');
+
+// Theme toggle (defaults to device theme; toggle applies to the current visit)
 const html = document.documentElement;
-const themeToggle = document.getElementById('themeToggle');
-
-themeToggle.addEventListener('click', () => {
-    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
+document.getElementById('themeToggle').addEventListener('click', () => {
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
-
-// React instantly if user changes OS theme while site is open
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+    html.setAttribute('data-theme', e.matches ? 'light' : 'dark');
 });
 
 // Mobile nav
 const hamburger = document.getElementById('hamburger');
 const navMobile = document.getElementById('navMobile');
-
 hamburger.addEventListener('click', () => {
-    navMobile.classList.toggle('open');
+    const open = navMobile.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
 });
+navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navMobile.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+}));
 
-navMobile.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navMobile.classList.remove('open'));
-});
-
-// Active nav link on scroll
-const sections = document.querySelectorAll('section[id]');
+// Nav border on scroll + active link
+const nav = document.getElementById('nav');
+const sections = document.querySelectorAll('main section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-function updateActiveLink() {
+function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
     let current = '';
-    sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 80) {
-            current = section.getAttribute('id');
-        }
+    sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
     });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${current}`));
 }
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-window.addEventListener('scroll', updateActiveLink, { passive: true });
-
-// Scroll-in animations
+// Reveal on scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -54,56 +46,51 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// Copy email to clipboard
-let copyTimer = null;
-
-document.querySelectorAll('.copy-email-trigger').forEach(btn => {
-    btn.addEventListener('click', () => {
-        navigator.clipboard.writeText('sdineshkumar1208@gmail.com').then(() => {
-            document.querySelectorAll('.copy-email-trigger').forEach(b => {
-                b.classList.remove('copied');
-                if (b.classList.contains('btn')) {
-                    b.style.minWidth = '';
-                    b.textContent = 'Copy Email Address';
-                }
-            });
-            btn.classList.add('copied');
-            if (btn.classList.contains('btn')) {
-                btn.style.minWidth = btn.offsetWidth + 'px';
-                btn.textContent = 'Copied ✓';
-            }
-            clearTimeout(copyTimer);
-            copyTimer = setTimeout(() => {
-                btn.classList.remove('copied');
-                if (btn.classList.contains('btn')) {
-                    btn.style.minWidth = '';
-                    btn.textContent = 'Copy Email Address';
-                }
-            }, 2000);
-        });
+// Copy email
+const copyBtn = document.querySelector('.copy-email');
+let copyTimer;
+copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('sdineshkumar1208@gmail.com').then(() => {
+        copyBtn.style.minWidth = copyBtn.offsetWidth + 'px';
+        copyBtn.textContent = 'Copied ✓';
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(() => { copyBtn.textContent = 'Copy email address'; }, 2000);
     });
 });
 
-// Dynamic copyright year
-const yearEl = document.getElementById('currentYear');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
+// Scroll progress bar
+const progress = document.getElementById('progress');
+function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+window.addEventListener('resize', updateProgress);
+updateProgress();
 
-
-
-
-
-
+// Resume snapshot dialog
+const resumeDialog = document.getElementById('resumeDialog');
+function openResume() {
+    if (!resumeDialog.showModal) {
+        window.open('dinesh_kumar_cv.pdf', '_blank', 'noopener');
+        return;
+    }
+    resumeDialog.showModal();
+}
+document.getElementById('previewResumeHero').addEventListener('click', openResume);
+function closeResume() {
+    if (!resumeDialog.open || resumeDialog.classList.contains('closing')) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { resumeDialog.close(); return; }
+    resumeDialog.classList.add('closing');
+    resumeDialog.addEventListener('animationend', () => {
+        resumeDialog.classList.remove('closing');
+        resumeDialog.close();
+    }, { once: true });
+}
+document.getElementById('closeResume').addEventListener('click', closeResume);
+resumeDialog.addEventListener('click', (e) => { if (e.target === resumeDialog) closeResume(); });
+resumeDialog.addEventListener('cancel', (e) => { e.preventDefault(); closeResume(); });
